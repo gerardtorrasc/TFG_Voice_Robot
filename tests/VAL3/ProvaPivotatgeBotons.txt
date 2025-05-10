@@ -1,0 +1,195 @@
+begin
+  userPage()
+  cls()
+  
+  //Declaracions in/out
+  dioLink(dLed[0],io:bOut4)
+  dioLink(dLed[1],io:bOut5)
+  dioLink(dLed[2],io:bOut6)
+  dioLink(dLed[3],io:bOut7)
+  dioLink(dPB[0],io:bIn4)
+  dioLink(dPB[1],io:bIn5)
+  dioLink(dPB[2],io:bIn6)
+  dioLink(dPB[3],io:bIn7)
+  
+  //Inicialitzacio variables
+  velRapida.vel = 30
+  velRapida.accel = 30
+  velRapida.decel = 30
+  
+  velLenta.rvel = 20
+  velLenta.accel = 10
+  velLenta.decel = 10
+  
+  dLed[0] = false
+  dLed[1] = false
+  dLed[2] = false
+  dLed[3] = false
+  
+  nGraus = 5
+  
+  //Start Programa
+  putln("Iniciant Programa")
+  movej(jHome,tPunxa, velRapida)
+  movej(jWork,tPunxa, velRapida)
+  waitEndMove()
+  putln("Hem arribat a work")
+  
+  movel(pInsercio[0],tPunxa,velLenta)
+  movel(pInsercio[0],tPivot,velLenta)
+  waitEndMove()
+  putln("Hem inserit l'agulla")
+  
+  while(dPB[3] == false)
+    
+    //Rotació en x
+    if(dPB[0] == true)
+      dLed[0] = true
+      
+      pInsercio[1] = here(tPivot, fPacient)
+      pInsercio[2].trsf.x = pInsercio[1].trsf.x
+      pInsercio[2].trsf.y = pInsercio[1].trsf.y
+      pInsercio[2].trsf.z = pInsercio[1].trsf.z
+      pInsercio[2].trsf.rx = pInsercio[1].trsf.rx + nGraus
+      pInsercio[2].trsf.ry = pInsercio[1].trsf.ry
+      pInsercio[2].trsf.rz = pInsercio[1].trsf.rz
+      
+      put("Punt acrual: " )
+      put(pInsercio[1].trsf.x)
+      put(", ")
+      put(pInsercio[1].trsf.y)
+      put(", ")
+      put(pInsercio[1].trsf.z)
+      put(", ")
+      put(pInsercio[1].trsf.rx)
+      put(", ")
+      put(pInsercio[1].trsf.ry)
+      put(", ")
+      putln(pInsercio[1].trsf.rz)
+      
+      put("Punt calculat: ")
+      put(pInsercio[2].trsf.x)
+      put(", ")
+      put(pInsercio[2].trsf.y)
+      put(", ")
+      put(pInsercio[2].trsf.z)
+      put(", ")
+      put(pInsercio[2].trsf.rx)
+      put(", ")
+      put(pInsercio[2].trsf.ry)
+      put(", ")
+      putln(pInsercio[2].trsf.rz)
+      
+      movel(pInsercio[2],tPivot,velLenta)
+      waitEndMove()
+      putln("Hem assolit la posició calculada")
+      
+      dLed[0] = false
+    endIf
+    
+    //Rotació en y
+    if(dPB[1] == true)
+      dLed[1] = true
+      
+      pInsercio[1] = here(tPivot, fPacient)
+      pInsercio[2].trsf.x = pInsercio[1].trsf.x
+      pInsercio[2].trsf.y = pInsercio[1].trsf.y
+      pInsercio[2].trsf.z = pInsercio[1].trsf.z
+      pInsercio[2].trsf.rx = pInsercio[1].trsf.rx 
+      pInsercio[2].trsf.ry = pInsercio[1].trsf.ry + nGraus
+      pInsercio[2].trsf.rz = pInsercio[1].trsf.rz
+      
+      put("Punt acrual: " )
+      put(pInsercio[1].trsf.x)
+      put(", ")
+      put(pInsercio[1].trsf.y)
+      put(", ")
+      put(pInsercio[1].trsf.z)
+      put(", ")
+      put(pInsercio[1].trsf.rx)
+      put(", ")
+      put(pInsercio[1].trsf.ry)
+      put(", ")
+      putln(pInsercio[1].trsf.rz)
+      
+      put("Punt calculat: ")
+      put(pInsercio[2].trsf.x)
+      put(", ")
+      put(pInsercio[2].trsf.y)
+      put(", ")
+      put(pInsercio[2].trsf.z)
+      put(", ")
+      put(pInsercio[2].trsf.rx)
+      put(", ")
+      put(pInsercio[2].trsf.ry)
+      put(", ")
+      putln(pInsercio[2].trsf.rz)
+      
+      movel(pInsercio[2],tPivot,velLenta)
+      waitEndMove()
+      putln("Hem assolit la posició calculada")
+      
+      dLed[1] = false
+    endIf
+    
+    //Rotació en z
+    if(dPB[2] == true)
+      dLed[2] = true
+      
+      pInsercio[1] = here(tPivot, fPacient)
+      pInsercio[2].trsf.x = pInsercio[1].trsf.x
+      pInsercio[2].trsf.y = pInsercio[1].trsf.y
+      pInsercio[2].trsf.z = pInsercio[1].trsf.z
+      pInsercio[2].trsf.rx = pInsercio[1].trsf.rx
+      pInsercio[2].trsf.ry = pInsercio[1].trsf.ry
+      pInsercio[2].trsf.rz = pInsercio[1].trsf.rz + nGraus
+      
+      put("Punt acrual: " )
+      put(pInsercio[1].trsf.x)
+      put(", ")
+      put(pInsercio[1].trsf.y)
+      put(", ")
+      put(pInsercio[1].trsf.z)
+      put(", ")
+      put(pInsercio[1].trsf.rx)
+      put(", ")
+      put(pInsercio[1].trsf.ry)
+      put(", ")
+      putln(pInsercio[1].trsf.rz)
+      
+      put("Punt calculat: ")
+      put(pInsercio[2].trsf.x)
+      put(", ")
+      put(pInsercio[2].trsf.y)
+      put(", ")
+      put(pInsercio[2].trsf.z)
+      put(", ")
+      put(pInsercio[2].trsf.rx)
+      put(", ")
+      put(pInsercio[2].trsf.ry)
+      put(", ")
+      putln(pInsercio[2].trsf.rz)
+      
+      movel(pInsercio[2],tPivot,velLenta)
+      waitEndMove()
+      putln("Hem assolit la posició calculada")
+      
+      dLed[2] = false
+    endIf
+    
+  endWhile
+  
+  
+  //delay(1)
+  //dLed[0] = true
+  //wait(dPB[0] == true)
+  
+  movel(pInsercio[0],tPivot,velLenta)
+  putln("Tornant a home")
+  movel(pInsercio[0],tPunxa,velLenta)
+  
+  movej(jWork,tPunxa, velRapida)
+  movej(jHome,tPunxa, velRapida)
+  waitEndMove()
+  putln("He arribat a home")
+end

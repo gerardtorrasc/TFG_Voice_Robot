@@ -4,9 +4,9 @@ Aquest projecte de Treball de Fi de Grau consisteix en el desenvolupament d’un
 El sistema transforma la veu en ordres estructurades, que es transmeten via sockets TCP/IP fins a un receptor que les interpreta i activa els moviments del robot. Els moviments controlats estan dissenyats per simular l’entrada i sortida de la càmera pel trocar i la pivotació al voltant del punt d’inserció, tal com es requereix en procediments laparoscòpics.
 
 ## Estructura del repositori
+- `docs/`: Memòria, manuals d'usuari i instal·lació i fitxer amb els requeriments
 - `src/`: Codis finals del sistema integrat
 - `tests/`: Scripts de proves parcials (veu, sockets, moviment)
-- `docs/`: Memòria, manuals d'usuari i instal·lació i fitxer amb els requeriments
 - `README.md`: aquest fitxer
 - `LICENSE`: Llicència MIT que regula l’ús i distribució del projecte
 - `the_voice_robot_project`: Carpeta amb l'arxiu `Voice_Robot.zip`. El fitxer `Voice_Robot.zip` conté el projecte final creat a l'entorn SRS19, preparat per ser obert directament al simulador o a la consola MCP del robot.

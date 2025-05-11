@@ -22,4 +22,5 @@ El sistema transforma la veu en ordres estructurades, que es transmeten via sock
   - **Robot Stäubli TX60** amb connexió TCP/IP activa
   - **Consola MCP** per controlar i supervisar el robot
   - **Ordinador amb el software SRS19 instal·lat**, per executar i simular programes en llenguatge VAL3
+  - **Intèrpret i entorn de desenvolupament Python**, com Visual Studio Code, PyCharm o similar
 - **Sistema operatiu**: Windows o Linux

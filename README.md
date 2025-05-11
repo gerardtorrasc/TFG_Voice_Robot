@@ -42,6 +42,7 @@ Universitat de Girona
 
 Curs 2024–2025
 
+
 Tutor: Xavier Cufí Solé
 
 Suport docent addicional: Professor Esteve-Amadeu Hernandez Uptegrove

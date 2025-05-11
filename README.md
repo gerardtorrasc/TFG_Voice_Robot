@@ -8,6 +8,7 @@ El sistema transforma la veu en ordres estructurades, que es transmeten via sock
 - `tests/`: Scripts de proves parcials (veu, sockets, moviment)
 - `docs/`: Memòria, manuals d'usuari i instal·lació i fitxer amb els requeriments
 - `README.md`: aquest fitxer
+- `the_voice_robot_project`: Carpeta amb l'arxiu `Voice_Robot.zip`. El fitxer `Voice_Robot.zip` conté el projecte original creat a l'entorn SRS19, preparat per ser obert directament al simulador o a la consola MCP del robot.
 
 
 ## Requeriments

@@ -35,8 +35,11 @@ El sistema transforma la veu en ordres estructurades, que es transmeten via sock
 
 ## Autoria
 Gerard Torras Canela
+
 Grau en Enginyeria Biomèdica
+
 Universitat de Girona
+
 Curs 2024–2025
 
 Tutor: Xavier Cufí Solé

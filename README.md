@@ -6,10 +6,20 @@ El sistema transforma la veu en ordres estructurades, que es transmeten via sock
 ## Estructura del repositori
 - src/ : Codis finals del sistema integrat
 - tests/ : Scripts de proves parcials (veu, sockets, moviment)
-- docs/ : Memòria, manual d'usuari i instal·lació i fitxer amb els requeriments
+- docs/ : Memòria, manuals d'usuari i instal·lació i fitxer amb els requeriments
 - README.md : aquest fitxer
 
 
 ## Requeriments
 - **Python**
-- 
+- **Llibreries Python**:
+  - `speech_recognition`
+  - `pyaudio`
+  - `socket`
+  - `re`
+- **Hardware i entorn**
+  - Micròfon USB o ordinador amb micròfon integrat
+  - **Robot Stäubli TX60** amb connexió TCP/IP activa
+  - **Consola MCP** per controlar i supervisar el robot
+  - **Ordinador amb el software SRS19 instal·lat**, per executar i simular programes en llenguatge VAL3
+- **Sistema operatiu**: Windows o Linux

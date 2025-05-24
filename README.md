@@ -73,6 +73,7 @@ Podeu consultar el manual d'instal·lació complet i amb instruccions detallades
   - "casa" o "torna" → Torna a la posició HOME.
 
   - "final" → Tanca la connexió.
+  > Nota: Això en el cas que s'hagi seleccionat el mode de funcionament d'ordres orals. Es recorda que es pot seleccionar el mode de proves on el robot reacciona a ordres dels botons digitals de la taula, on cada botó fa una ordre (per veure una taula detallada, anar al manual complet).
 
 ### 4. Finalització
 - Un cop finalitzat l'ús (s'envii la ordre de tornar a la posició HOME), el robot tornarà a home automàticament

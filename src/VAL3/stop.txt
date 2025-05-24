@@ -1,0 +1,8 @@
+begin
+  //rutine de finalitzacio
+  movej(jWork,tPunxa,velRapida)
+  movej(jHome,tPunxa,velRapida)
+  waitEndMove()
+end
+
+      

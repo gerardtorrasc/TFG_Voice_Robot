@@ -1,0 +1,54 @@
+begin
+  userPage()
+  cls()
+  //vincular socket
+  sioLink(socketVoice,io:voice_server)
+  // Vincular I/O
+  dioLink(dPB[0],io:bIn4)
+  dioLink(dPB[1],io:bIn5)
+  dioLink(dPB[2],io:bIn6)
+  dioLink(dPB[3],io:bIn7)
+  dioLink(dLed[0],io:bOut4)
+  dioLink(dLed[1],io:bOut5)
+  dioLink(dLed[2],io:bOut6)
+  dioLink(dLed[3],io:bOut7)
+  //apagem leds
+  dLed[0]=false
+  dLed[1]=false
+  dLed[2]=false
+  dLed[3]=false
+  // Velocitats
+  velLenta.vel=5
+  velLenta.rvel=5
+  velLenta.accel=5
+  velLenta.decel=5
+  velRapida.vel=15
+  velRapida.accel=15
+  velRapida.decel=15
+  //definicio de tools(inersio 0mm)
+  tPivot[1].trsf.x=tPivot[0].trsf.x
+  tPivot[1].trsf.y=tPivot[0].trsf.y
+  tPivot[1].trsf.z=tPivot[0].trsf.z
+  tPivot[1].trsf.rx=tPivot[0].trsf.rx
+  tPivot[1].trsf.ry=tPivot[0].trsf.ry
+  tPivot[1].trsf.rz=tPivot[0].trsf.rz
+  // Paràmetres de moviment (provesMoviment)
+  nMilimetres=3.54
+  nGraus=5
+  nData=0
+  //start Main
+  putln("Inici del programa")
+  // Anar a posició inicial
+  movej(jHome,tPunxa,velRapida)
+  movej(jWork,tPunxa,velRapida)
+  waitEndMove()
+  
+  //seleccio de la aplicacio per veu o la aplicacio per botons.
+  //Per seleccionar la de veu canviar el valor de la variable verbose a true i per seleccionar la de botons canviar el valor de la variable verbose a false
+  if (verbose==true)
+    call mainApp()
+  else
+    call ButtonsApp()
+  endIf
+  waitEndMove()
+end

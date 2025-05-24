@@ -37,7 +37,7 @@ El sistema transforma la veu en ordres estructurades, que es transmeten via sock
 ### 2. Part Python (reconeixement de veu)
 - Instal·lar Python.
 - Instal·lar un entorn de desenvolupament com **Visual Studio Code** o utilitzar la terminal.
-- Descarregar l'arxiu `socketVoice.py` dins de la carpeta `src`.
+- Descarregar l'arxiu `voiceSocket.py` dins de la carpeta `src`.
 - Obrir un terminal i executar:
     ```bash
     pip install SpeechRecognition
@@ -60,7 +60,7 @@ Podeu consultar el manual d'instal·lació complet i amb instruccions detallades
 - Envia el programa al robot a partir del gestor de transferència.
 - Assegura’t d’haver seleccionat el mode de funcionament desitjat mitjançant la variable `verbose` (`true` = veu, `false` = botons).
 - Des de la consola del robot, obre la aplicació i prem RUN.
-- Un cop la aplicació està funcionant en el robot, obre el Visual Studio Code o un terminal i executa el fitxer `socketVoice.py`.
+- Un cop la aplicació està funcionant en el robot, obre el Visual Studio Code o un terminal i executa el fitxer `voiceSocket.py`.
 
 ### 3. Ús del sistema
 - Quan el robot hagi completat el moviment d’inserció inicial, pots donar ordres com:

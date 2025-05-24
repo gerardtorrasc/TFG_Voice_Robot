@@ -30,22 +30,56 @@ El sistema transforma la veu en ordres estructurades, que es transmeten via sock
 
 
 ## Instal·lació
-### 1. Part Robòtica:
-- Instal·lar **Stäubli Robotics Suite (SRS)**
-- Descarregar l'arxiu .zip que podeu trobar a la carpeta `the_voice_robot_project` dins d'aquest repositori
+### 1. Part Robòtica (SRS):
+- Instal·lar **Stäubli Robotics Suite (SRS)** des de la web oficial
+- Descarregar l'arxiu `.zip` que podeu trobar a la carpeta `the_voice_robot_project` dins d'aquest repositori
+  
 ### 2. Part Python (reconeixement de veu)
 - Instal·lar Python
-- Instal·lar un intèrpret de Python (per exemple: Visual Studio Code)
+- Instal·lar un entorn de desenvolupament com **Visual Studio Code** o utilitzar la terminal
 - Obrir un terminal i executar:
     ```bash
     pip install SpeechRecognition
     pip install pyaudio
     ```
   > Nota: si `pyaudio` dona error, pots instal·lar un fitxer `.whl` manual.
+
 ### Manual Complet
 Podeu consultar el manual d'instal·lació complet i amb instruccions detallades la carpeta `docs` d'aquest repositori
 
 ## Manual d'usuari
+### 1. Preparació del sistema
+- Encén el robot i prepara'l per la simulació (afageix l'eina, el pacient, etc.)
+- Assegura't que treballes amb un ordinador connectat a la mateixa xarxa que el robot
+- Encén el micròfon i comprova que funciona
+
+### 2. Llançament del sitema 
+- Descomprimeix el zip del projecte
+- Obre SRS i carrega el projecte
+- Envia el programa al robot a partir del gestor de transferència. No oblideu seleccionar el mode de funcionament mitjançant la variable verbose
+- Des de la consola del robot, obre la aplicació i executa-la amb el botó de RUN
+- Un cop la aplicació està funcionant en el robot, obre el Visual Studio Code o un terminal i executa el fitxer `socketVoice.py`
+
+### 3. Ús del sistema
+- Quan el sistema estigui actiu i el robot s'hagi mogut fins a fer la inserció al pacient, dona ordres com:
+  - "entra" → Mou el braç cap a dins.
+
+  - "surt" → Mou el braç cap a fora.
+
+  - "dreta" → Pivota a la dreta del pacient.
+
+  - "esquerra" → Pivota a l'esquerra.
+
+  - "casa" o "torna" → Torna a la posició HOME.
+
+  - "final" → Tanca la connexió.
+
+### 4. Finalització
+- Un cop finalitzat l'ús (s'envii la ordre de tornar a la posició HOME), el robot tornarà a home automàticament
+- Pots aturar el codi de python dient la ordre "final" o "fi" i s'acabarà l'execució
+
+### Manual Complet
+Podeu consultar el manual d'usuari complet i amb instruccions detallades la carpeta `docs` d'aquest repositori
 
 
 ## Autoria

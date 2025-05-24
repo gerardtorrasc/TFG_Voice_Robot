@@ -1,0 +1,132 @@
+begin
+  userPage()
+  cls()
+  //vincular socket
+  sioLink(socketVoice,io:voice_server)
+  // Vincular I/O
+  dioLink(dPB[0],io:bIn4)
+  dioLink(dPB[1],io:bIn5)
+  dioLink(dPB[2],io:bIn6)
+  dioLink(dPB[3],io:bIn7)
+  dioLink(dLed[0],io:bOut4)
+  dioLink(dLed[1],io:bOut5)
+  dioLink(dLed[2],io:bOut6)
+  dioLink(dLed[3],io:bOut7)
+  //apagem leds
+  dLed[0]=false
+  dLed[1]=false
+  dLed[2]=false
+  dLed[3]=false
+  // Velocitats
+  velLenta.vel=5
+  velLenta.rvel=5
+  velLenta.accel=5
+  velLenta.decel=5
+  velRapida.vel=15
+  velRapida.accel=15
+  velRapida.decel=15
+  //definicio de tools(inersio 0mm)
+  tPivot[1].trsf.x=tPivot[0].trsf.x
+  tPivot[1].trsf.y=tPivot[0].trsf.y
+  tPivot[1].trsf.z=tPivot[0].trsf.z
+  tPivot[1].trsf.rx=tPivot[0].trsf.rx
+  tPivot[1].trsf.ry=tPivot[0].trsf.ry
+  tPivot[1].trsf.rz=tPivot[0].trsf.rz
+  // Paràmetres de moviment (provesMoviment)
+  nMilimetres=3.54
+  nGraus=5
+  nData=0
+
+  //start Main
+  putln("Inici del programa")
+  // Anar a posició inicial
+  movej(jHome,tPunxa,velRapida)
+  movej(jWork,tPunxa,velRapida)
+  waitEndMove()  movej(appro(pInsercio[0],{0,0,-50,0,0,0}),tPunxa[0],velRapida)
+  movel(pInsercio[0],tPunxa[0],velLenta). 
+  movel(pInsercio[0],tPivot[1],velLenta)
+  
+  //guardem posició inicial
+  pInsercio[1].trsf.x=pInsercio[0].trsf.x
+  pInsercio[1].trsf.y=pInsercio[0].trsf.y
+  pInsercio[1].trsf.z=pInsercio[0].trsf.z
+  pInsercio[1].trsf.rx=pInsercio[0].trsf.rx
+  pInsercio[1].trsf.ry=pInsercio[0].trsf.ry
+  pInsercio[1].trsf.rz=pInsercio[0].trsf.rz
+  waitEndMove()
+  
+  putln("Esperant ordres")
+  // Bucle de control amb botons
+  while(dPB[3]==false)
+    
+    // traslació Eix Z+
+    if dPB[0]==true
+      
+      dLed[0]=true
+      putln("Entrant")
+      tPivot[1].trsf.x=tPivot[1].trsf.x-nMilimetres
+      tPivot[1].trsf.y=tPivot[1].trsf.y-nMilimetres
+      tPivot[1].trsf.z=tPivot[1].trsf.z
+      tPivot[1].trsf.rx=tPivot[1].trsf.rx
+      tPivot[1].trsf.ry=tPivot[1].trsf.ry
+      tPivot[1].trsf.rz=tPivot[1].trsf.rz
+      movel(pInsercio[1],tPivot[1],velLenta)
+      waitEndMove()
+      dLed[0]=false
+      
+    endIf
+    
+    // traslació Eix Z-
+    if dPB[1]==true
+      
+      dLed[1]=true
+      putln("Sortint")
+      tPivot[1].trsf.x=tPivot[1].trsf.x+nMilimetres
+      tPivot[1].trsf.y=tPivot[1].trsf.y+nMilimetres
+      tPivot[1].trsf.z=tPivot[1].trsf.z
+      tPivot[1].trsf.rx=tPivot[1].trsf.rx
+      tPivot[1].trsf.ry=tPivot[1].trsf.ry
+      tPivot[1].trsf.rz=tPivot[1].trsf.rz
+      movel(pInsercio[1],tPivot[1],velLenta)
+      waitEndMove()
+      dLed[1]=false
+      
+    endIf
+    
+    // Pivotar (rotació en Y+ punt de pivotatge)
+    if dPB[2]==true
+      
+      dLed[2]=true
+      putln("Pivotant a l'esquerra del pacient")
+      //agafem posició actual
+      pInsercio[1]=here(tPivot[1],fPacient)
+      // Conservar posició XYZ fixa
+      pInsercio[1].trsf.ry=pInsercio[1].trsf.ry+nGraus
+      movel(pInsercio[1],tPivot[1],velLenta)
+      waitEndMove()
+      dLed[2]=false
+      
+    endIf
+    
+    // Pivotar (rotació en Y- punt de pivotatge)
+    if command=="3"
+      
+      dLed[3]=true
+      putln("Pivotant a la dreta del pacient")
+      //agafem posició actual
+      pInsercio[1]=here(tPivot[1],fPacient)
+      // Conservar posició XYZ fixa
+      pInsercio[1].trsf.ry=pInsercio[1].trsf.ry-nGraus
+      movel(pInsercio[1],tPivot[1],velLenta)
+      waitEndMove()
+      dLed[3]=false
+      
+    endIf
+  endWhile
+  
+  putln("Final del bucle. Tornant a home.")
+  movel(pInsercio[0],tPivot[1],velLenta)
+  movel(pInsercio[0],tPunxa[0],velLenta)
+  movej(appro(pInsercio[0],{0,0,-50,0,0,0}),tPunxa[0],velRapida)
+  waitEndMove()
+end

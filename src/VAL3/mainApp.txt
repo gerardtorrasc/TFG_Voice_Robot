@@ -1,0 +1,105 @@
+begin
+  movej(appro(pInsercio[0],{0,0,-50,0,0,0}),tPunxa[0],velRapida)
+  movel(pInsercio[0],tPunxa[0],velLenta)
+  movel(pInsercio[0],tPivot[1],velLenta)
+  //guardem posició inicial
+  pInsercio[1].trsf.x=pInsercio[0].trsf.x
+  pInsercio[1].trsf.y=pInsercio[0].trsf.y
+  pInsercio[1].trsf.z=pInsercio[0].trsf.z
+  pInsercio[1].trsf.rx=pInsercio[0].trsf.rx
+  pInsercio[1].trsf.ry=pInsercio[0].trsf.ry
+  pInsercio[1].trsf.rz=pInsercio[0].trsf.rz
+  waitEndMove()
+  putln("Esperant ordres")
+  // Bucle de control amb botons
+  putln(command)
+  while(command!="4")
+    
+    command=""
+    nData=sioGet(socketVoice,buffer)
+    idx=0
+    
+    while(nData>0)
+      
+      command=command+chr(buffer[idx])
+      //debug:
+      //put(idx)
+      //put(" ' ")
+      //put(buffer[idx])
+      //put(" ' ")
+      //put(command)
+      idx=idx+1
+      nData=nData-1
+      
+    endWhile
+    
+    //put(" Command received: ")
+    //putln(command)
+
+    if(len(command)>0 and command!="4")
+      if(command=="0" or command=="1" or command=="2" or command=="3")
+        
+        // traslació Eix Z+
+        if command=="0"
+          
+          putln("Entrant")
+          tPivot[1].trsf.x=tPivot[1].trsf.x-nMilimetres
+          tPivot[1].trsf.y=tPivot[1].trsf.y-nMilimetres
+          tPivot[1].trsf.z=tPivot[1].trsf.z
+          tPivot[1].trsf.rx=tPivot[1].trsf.rx
+          tPivot[1].trsf.ry=tPivot[1].trsf.ry
+          tPivot[1].trsf.rz=tPivot[1].trsf.rz
+          movel(pInsercio[1],tPivot[1],velLenta)
+          waitEndMove()
+
+        endIf
+        // traslació Eix Z-
+        if command=="1"
+          
+          putln("Sortint")
+          tPivot[1].trsf.x=tPivot[1].trsf.x+nMilimetres
+          tPivot[1].trsf.y=tPivot[1].trsf.y+nMilimetres
+          tPivot[1].trsf.z=tPivot[1].trsf.z
+          tPivot[1].trsf.rx=tPivot[1].trsf.rx
+          tPivot[1].trsf.ry=tPivot[1].trsf.ry
+          tPivot[1].trsf.rz=tPivot[1].trsf.rz
+          movel(pInsercio[1],tPivot[1],velLenta)
+          waitEndMove()
+
+        endIf
+        // Pivotar (rotació en Y+ punt de pivotatge)
+        if command=="2"
+          
+          putln("Pivotant a l'esquerra del pacient")
+          //agafem posició actual
+          pInsercio[1]=here(tPivot[1],fPacient)
+          // Conservar posició XYZ fixa
+          pInsercio[1].trsf.ry=pInsercio[1].trsf.ry+nGraus
+          movel(pInsercio[1],tPivot[1],velLenta)
+          waitEndMove()
+
+        endIf
+        // Pivotar (rotació en Y- punt de pivotatge)
+        if command=="3"
+          
+          putln("Pivotant a la dreta del pacient")
+          //agafem posició actual
+          pInsercio[1]=here(tPivot[1],fPacient)
+          // Conservar posició XYZ fixa
+          pInsercio[1].trsf.ry=pInsercio[1].trsf.ry-nGraus
+          movel(pInsercio[1],tPivot[1],velLenta)
+          waitEndMove()
+
+        endIf
+      else
+        putln("Comanda desconeguda")
+      endIf
+      command=""
+    endIf
+  endWhile
+  putln("Final del bucle. Tornant a home.")
+  movel(pInsercio[0],tPivot[1],velLenta)
+  movel(pInsercio[0],tPunxa[0],velLenta)
+  movej(appro(pInsercio[0],{0,0,-50,0,0,0}),tPunxa[0],velRapida)
+  waitEndMove()
+end

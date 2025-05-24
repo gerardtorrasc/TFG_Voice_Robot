@@ -30,7 +30,20 @@ El sistema transforma la veu en ordres estructurades, que es transmeten via sock
 
 
 ## Instal·lació
-
+### 1. Part Robòtica:
+- Instal·lar **Stäubli Robotics Suite (SRS)**
+- Descarregar l'arxiu .zip que podeu trobar a la carpeta `the_voice_robot_project` dins d'aquest repositori
+### 2. Part Python (reconeixement de veu)
+- Instal·lar Python
+- Instal·lar un intèrpret de Python (per exemple: Visual Studio Code)
+- Obrir un terminal i executar:
+    ```bash
+    pip install SpeechRecognition
+    pip install pyaudio
+    ```
+  > Nota: si `pyaudio` dona error, pots instal·lar un fitxer `.whl` manual.
+### Manual Complet
+Podeu consultar el manual d'instal·lació complet i amb instruccions detallades la carpeta `docs` d'aquest repositori
 
 ## Manual d'usuari
 

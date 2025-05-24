@@ -37,6 +37,7 @@ El sistema transforma la veu en ordres estructurades, que es transmeten via sock
 ### 2. Part Python (reconeixement de veu)
 - Instal·lar Python.
 - Instal·lar un entorn de desenvolupament com **Visual Studio Code** o utilitzar la terminal.
+- Descarregar l'arxiu `socketVoice.py` dins de la carpeta `src`.
 - Obrir un terminal i executar:
     ```bash
     pip install SpeechRecognition

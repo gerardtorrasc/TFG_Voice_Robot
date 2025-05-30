@@ -5,6 +5,7 @@ El sistema transforma la veu en ordres estructurades, que es transmeten via sock
 
 ## Estructura del repositori
 - `docs/`: Memòria, manuals d'usuari i instal·lació.
+- `media/`: Arxiu .zip amb un vídeo demostració del resultat final de la simulació
 - `src/`: Codis finals del sistema integrat.
 - `tests/`: Scripts de proves parcials (veu, sockets, moviment).
 - `the_voice_robot_project`: Carpeta amb l'arxiu `Voice_Robot.zip`. El fitxer `Voice_Robot.zip` conté el projecte final creat a l'entorn SRS19, preparat per ser obert directament al simulador o a la consola MCP del robot.
